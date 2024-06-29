@@ -1,70 +1,107 @@
-# Getting Started with Create React App
+# Memory Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+Memory Game is a simple yet fun card-matching game built with React. The game involves flipping over pairs of cards and remembering their positions to find all matching pairs. The goal is to match all pairs with the fewest moves possible.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- Shuffle and display cards on the board.
+- Flip cards and check for matches.
+- Disable cards during the checking phase.
+- Reset the game to start over.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Project Structure
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The project is organized as follows:
 
-### `npm test`
+- **App.js**: Main application component.
+- **Board.js**: Component to display the game board with cards.
+- **GameInfo.js**: Component to display game information and reset button.
+- **initialCards.js**: File containing the initial set of cards.
+- **App.css**: CSS file for styling the components.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `npm run build`
+### Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js
+- npm (Node Package Manager) or yarn
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repository:
 
-### `npm run eject`
+    ```bash
+    git clone https://github.com/your-username/memory-game.git
+    ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. Navigate to the project directory:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    ```bash
+    cd memory-game
+    ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. Install dependencies:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
 
-## Learn More
+### Running the Game
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Start the development server:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    ```bash
+    npm start
+    # or
+    yarn start
+    ```
 
-### Code Splitting
+2. Open your browser and navigate to `http://localhost:3000`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Components
 
-### Analyzing the Bundle Size
+### App Component
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The main component that holds the state and logic of the game.
 
-### Making a Progressive Web App
+- **State Variables**:
+  - `cards`: Array of card objects.
+  - `flippedCards`: Array of indices of currently flipped cards.
+  - `matchedCards`: Array of indices of matched cards.
+  - `isDisabled`: Boolean to disable card flipping during the checking phase.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **useEffect Hooks**:
+  - Shuffle cards when the component mounts.
+  - Check for matches when two cards are flipped.
 
-### Advanced Configuration
+- **Functions**:
+  - `handleCardClick`: Handles the logic when a card is clicked.
+  - `resetGame`: Resets the game state.
+  - `shuffleCards`: Shuffles the cards array.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Board Component
 
-### Deployment
+Displays the game board with cards.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- **Props**:
+  - `cards`: Array of card objects.
+  - `onCardClick`: Function to handle card click events.
 
-### `npm run build` fails to minify
+### GameInfo Component
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Displays game information and a reset button.
+
+- **Props**:
+  - `matchedCards`: Array of matched cards.
+  - `onReset`: Function to reset the game.
+
+## Usage
+
+1. Start the game by flipping over two cards.
+2. If the cards match, they remain flipped. If not, they flip back after a short delay.
+3. Continue until all pairs are matched.
+4. Click the reset button to start a new game.
